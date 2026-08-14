@@ -1,0 +1,293 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#eef5ff;
+    color:#333;
+}
+
+/* HEADER */
+
+.header{
+    background:linear-gradient(135deg,#2563eb,#1d4ed8);
+    color:#fff;
+    text-align:center;
+    padding:35px;
+    font-size:30px;
+    font-weight:600;
+    letter-spacing:.5px;
+    box-shadow:0 8px 20px rgba(37,99,235,.25);
+}
+
+/* FORM */
+
+.trip-form{
+    width:520px;
+    margin:35px auto;
+    background:#fff;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+
+.trip-form input,
+.trip-form select{
+
+    width:100%;
+    padding:14px 18px;
+    font-size:15px;
+
+    border:1px solid #d6d6d6;
+    border-radius:10px;
+
+    transition:.3s;
+    outline:none;
+}
+
+.trip-form input:focus,
+.trip-form select:focus{
+
+    border-color:#2563eb;
+    box-shadow:0 0 0 4px rgba(37,99,235,.15);
+
+}
+
+.trip-form button{
+
+    padding:15px;
+    border:none;
+    border-radius:10px;
+
+    background:#2563eb;
+    color:white;
+
+    font-size:16px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.trip-form button:hover{
+
+    background:#1d4ed8;
+    transform:translateY(-2px);
+
+}
+
+/* CARD */
+
+.card{
+
+    width:760px;
+
+    margin:25px auto;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:28px;
+
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+
+    animation:fade .4s ease;
+
+}
+
+@keyframes fade{
+
+    from{
+
+        opacity:0;
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+.card h2{
+
+    margin-bottom:15px;
+
+    color:#2563eb;
+
+}
+
+.card h3{
+
+    margin:20px 0 10px;
+
+    color:#111;
+
+}
+
+/* LIST */
+
+.card ul{
+
+    margin-left:20px;
+    margin-top:10px;
+
+}
+
+.card li{
+
+    margin:8px 0;
+
+}
+
+/* TABLE */
+
+table{
+
+    width:100%;
+
+    margin-top:15px;
+
+    border-collapse:collapse;
+
+    overflow:hidden;
+
+    border-radius:12px;
+
+}
+
+table th{
+
+    background:#2563eb;
+    color:white;
+    padding:14px;
+
+}
+
+table td{
+
+    padding:14px;
+    border-bottom:1px solid #eee;
+
+}
+
+table tr:nth-child(even){
+
+    background:#f8f9ff;
+
+}
+
+table tr:hover{
+
+    background:#edf4ff;
+
+}
+
+/* ACCORDION BUTTON */
+
+.card button{
+
+    padding:12px 18px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#2563eb;
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.card button:hover{
+
+    background:#1d4ed8;
+
+}
+
+/* PaginationComponent */
+
+.PaginationComponent{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin:40px 0;
+
+}
+
+.PaginationComponent button{
+
+    width:45px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:white;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    box-shadow:0 5px 12px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.PaginationComponent button:hover{
+
+    background:#2563eb;
+
+    color:white;
+
+    transform:translateY(-3px);
+
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+.trip-form{
+
+    width:92%;
+
+}
+
+.card{
+
+    width:92%;
+
+}
+
+}
