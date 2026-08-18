@@ -8,7 +8,6 @@ import {
   ListItemText,
   Chip,
   Stack,
-  Box,
   Avatar
 } from "@mui/material";
 

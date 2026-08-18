@@ -95,30 +95,33 @@ function DayDetails() {
       }}
     >
 
-      <Card sx={{ borderRadius: 3, boxShadow: '0 12px 36px rgba(16,24,40,0.08)' }}>
+      <Card
+        sx={{
+          borderRadius: 3,
+          background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+          color: "white",
+          boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)"
+        }}
+      >
 
         <CardContent sx={{ p: { xs: 2.5, md: 3.5 } }}>
 
-          <Typography
-            variant="h4"
-            color="primary"
-            gutterBottom
-          >
+          <Typography variant="h4" gutterBottom sx={{ fontWeight: 700, color: "white" }}>
             {plan.title}
           </Typography>
 
-          <Typography paragraph>
+          <Stack direction="row" spacing={1} mt={1} mb={2} sx={{ flexWrap: 'wrap' }}>
+            <Chip label={place} sx={{ backgroundColor: "rgba(255,255,255,0.18)", color: "white" }} />
+            <Chip label={`${numDays} Days`} sx={{ backgroundColor: "rgba(255,255,255,0.12)", color: "white" }} />
+          </Stack>
 
+          <Typography paragraph sx={{ color: "rgba(255,255,255,0.9)" }}>
             {plan.overview}
-
           </Typography>
 
-          <Divider sx={{ my: 2 }} />
+          <Divider sx={{ my: 2, backgroundColor: "rgba(255,255,255,0.25)" }} />
 
-          <Typography
-            variant="h5"
-            gutterBottom
-          >
+          <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, color: "white" }}>
             Complete Schedule
           </Typography>
 
@@ -126,10 +129,10 @@ function DayDetails() {
 
             {plan.activities.map((activity, index) => (
 
-              <ListItem key={index}>
+              <ListItem key={index} sx={{ mb: 1, borderRadius: 1, backgroundColor: "rgba(255,255,255,0.06)" }}>
 
                 <ListItemText
-                  primary={activity}
+                  primary={<Typography sx={{ color: "white" }}>{activity}</Typography>}
                 />
 
               </ListItem>
@@ -138,34 +141,26 @@ function DayDetails() {
 
           </List>
 
-          <Divider sx={{ my: 2 }} />
+          <Divider sx={{ my: 2, backgroundColor: "rgba(255,255,255,0.18)" }} />
 
-          <Typography
-            variant="h5"
-            gutterBottom
-          >
+          <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, color: "white" }}>
             Travel Tips
           </Typography>
 
           <Stack direction="row" spacing={1} flexWrap="wrap">
             {plan.tips.map((tip, index) => (
-              <Chip key={index} label={tip} color="primary" variant="outlined" />
+              <Chip key={index} label={tip} sx={{ backgroundColor: "rgba(255,255,255,0.12)", color: "white" }} />
             ))}
           </Stack>
 
-          <Divider sx={{ my: 2 }} />
+          <Divider sx={{ my: 2, backgroundColor: "rgba(255,255,255,0.18)" }} />
 
-          <Typography
-            variant="h5"
-            color="success.main"
-          >
+          <Typography variant="h6" sx={{ color: "white", fontWeight: 700 }}>
             Estimated Budget
           </Typography>
 
-          <Typography>
-
+          <Typography sx={{ color: "rgba(255,255,255,0.95)", mt: 1 }}>
             {plan.budget}
-
           </Typography>
 
         </CardContent>
