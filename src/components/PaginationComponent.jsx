@@ -6,7 +6,8 @@ import {
 
 function PaginationComponent({
   currentPage,
-  setCurrentPage
+  setCurrentPage,
+  totalDays = 3
 }) {
 
   const handleChange = (event, value) => {
@@ -25,15 +26,16 @@ function PaginationComponent({
     >
 
       <Typography variant="h6">
-        Travel Plan
+        Day {currentPage} of {totalDays}
       </Typography>
 
       <MuiPagination
-        count={3}
+        count={totalDays}
         page={currentPage}
         onChange={handleChange}
         color="primary"
         shape="rounded"
+        size="large"
       />
 
     </Stack>

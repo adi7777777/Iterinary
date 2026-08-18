@@ -19,14 +19,12 @@ function App() {
 
       <Routes>
 
-        <Route
-          path="/"
-          element={
-            <Home
-              trip={trip}
-              setTrip={setTrip}
-            />
-          }
+        <Route path="/" element={
+          <Home
+            trip={trip}
+            setTrip={setTrip}
+          />
+        }
         />
 
         <Route

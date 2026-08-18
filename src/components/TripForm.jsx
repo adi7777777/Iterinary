@@ -82,9 +82,11 @@ onGenerate(trip);
     <Paper
       elevation={4}
       sx={{
-        p: 4,
+        p: { xs: 3, md: 4 },
         mt: 4,
         borderRadius: 3,
+        background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(245,249,255,0.98) 100%)",
+        boxShadow: "0 12px 40px rgba(16,24,40,0.08)"
       }}
     >
       <Typography
@@ -103,31 +105,26 @@ onGenerate(trip);
       
 <FormControl fullWidth>
 
-    <InputLabel>
-        Destination
-    </InputLabel>
+  <InputLabel>
+    Destination
+  </InputLabel>
 
-    <Select
-        name="place"
-        value={form.place}
-        label="Destination"
-        onChange={handleChange}
-    >
+  <Select
+    name="place"
+    value={form.place}
+    label="Destination"
+    onChange={handleChange}
+  >
 
-        {
-            places.map((place) => (
+    {places.map((place) => (
 
-                <MenuItem
-                    key={place.id}
-                    value={place.name}
-                >
-                    {place.name}
-                </MenuItem>
+      <MenuItem key={place.id} value={place.name}>
+        {place.name}
+      </MenuItem>
 
-            ))
-        }
+    ))}
 
-    </Select>
+  </Select>
 
 </FormControl>
 
