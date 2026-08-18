@@ -1,0 +1,38 @@
+:root{
+  --panel-bg: rgba(255,255,255,0.82);
+  --soft-shadow: 0 12px 40px rgba(16,24,40,0.06);
+  --accent-1: #667eea;
+  --accent-2: #764ba2;
+}
+
+.home-root{
+  background: linear-gradient(180deg, #f6f8ff 0%, #fbf7ff 100%);
+  padding: 36px 0 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.main-panel{
+  width: 100%;
+  max-width: 920px;
+  background: var(--panel-bg);
+  border-radius: 20px;
+  padding: 28px;
+  box-shadow: var(--soft-shadow);
+  backdrop-filter: blur(6px);
+}
+
+.section{
+  margin-top: 22px;
+}
+
+/* a subtle header above the form */
+#tripForm .MuiPaper-root{
+  background: #fff;
+  box-shadow: 0 14px 40px rgba(102,126,234,0.06);
+  border-radius: 16px;
+}
+
+@media (max-width: 800px){
+  .main-panel{ padding: 18px; margin: 0 12px; }
+}

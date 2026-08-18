@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Box } from "@mui/material";
 import Layout from "../components/Layout";
+import "./Home.css";
 
 import TripForm from "../components/TripForm";
 import BlogCard from "../components/BlogCard";
@@ -32,41 +33,40 @@ function Home({ trip, setTrip }) {
 
   return (
     <Layout sx={{ mt: 4, mb: 4 }}>
-      {/* Trip Form */}
-      <Box id="tripForm">
-        <TripForm onGenerate={setTrip} />
-      </Box>
+      <div className="home-root">
+        <div className="main-panel">
 
-      {trip && (
-        <>
-          {/* Blog */}
-          <Box id="blog" mt={4}>
-            <BlogCard place={trip.place} />
+          {/* Trip Form */}
+          <Box id="tripForm">
+            <TripForm onGenerate={setTrip} />
           </Box>
 
-          {/* Itinerary */}
-          <Box id="itinerary" mt={4}>
-            <Itinerary
-              trip={trip}
-              currentPage={currentPage}
-            />
-          </Box>
+          {trip && (
+            <>
+              {/* Blog */}
+              <Box id="blog" className="section">
+                <BlogCard place={trip.place} />
+              </Box>
 
-          {/* Cost */}
-          <Box id="cost" mt={4}>
-            <CostAccordion />
-          </Box>
+              {/* Itinerary */}
+              <Box id="itinerary" className="section">
+                <Itinerary trip={trip} currentPage={currentPage} />
+              </Box>
 
-          {/* Pagination */}
-          <Box id="pagination" mt={4}>
-            <PaginationComponent
-              currentPage={currentPage}
-              setCurrentPage={setCurrentPage}
-              totalDays={numDays}
-            />
-          </Box>
-        </>
-      )}
+              {/* Cost */}
+              <Box id="cost" className="section">
+                <CostAccordion />
+              </Box>
+
+              {/* Pagination */}
+              <Box id="pagination" className="section">
+                <PaginationComponent currentPage={currentPage} setCurrentPage={setCurrentPage} totalDays={numDays} />
+              </Box>
+            </>
+          )}
+
+        </div>
+      </div>
     </Layout>
   );
 }
