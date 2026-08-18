@@ -1,7 +1,5 @@
 import {
   Container,
-  Card,
-  CardContent,
   Typography,
   Divider,
   List,
@@ -10,6 +8,8 @@ import {
   Chip,
   Stack
 } from "@mui/material";
+
+import SharedCard from "../components/SharedCard";
 
 import { useParams, useLocation } from "react-router-dom";
 
@@ -95,77 +95,56 @@ function DayDetails() {
       }}
     >
 
-      <Card
-        sx={{
-          borderRadius: 3,
-          background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-          color: "white",
-          boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)"
-        }}
-      >
+      <SharedCard>
 
-        <CardContent sx={{ p: { xs: 2.5, md: 3.5 } }}>
+        <Typography variant="h4" gutterBottom sx={{ fontWeight: 700, color: "white" }}>
+          {plan.title}
+        </Typography>
 
-          <Typography variant="h4" gutterBottom sx={{ fontWeight: 700, color: "white" }}>
-            {plan.title}
-          </Typography>
+        <Stack direction="row" spacing={1} mt={1} mb={2} sx={{ flexWrap: "wrap" }}>
+          <Chip label={place} sx={{ backgroundColor: "rgba(255,255,255,0.18)", color: "white" }} />
+          <Chip label={`${numDays} Days`} sx={{ backgroundColor: "rgba(255,255,255,0.12)", color: "white" }} />
+        </Stack>
 
-          <Stack direction="row" spacing={1} mt={1} mb={2} sx={{ flexWrap: 'wrap' }}>
-            <Chip label={place} sx={{ backgroundColor: "rgba(255,255,255,0.18)", color: "white" }} />
-            <Chip label={`${numDays} Days`} sx={{ backgroundColor: "rgba(255,255,255,0.12)", color: "white" }} />
-          </Stack>
+        <Typography paragraph sx={{ color: "rgba(255,255,255,0.9)" }}>
+          {plan.overview}
+        </Typography>
 
-          <Typography paragraph sx={{ color: "rgba(255,255,255,0.9)" }}>
-            {plan.overview}
-          </Typography>
+        <Divider sx={{ my: 2, backgroundColor: "rgba(255,255,255,0.25)" }} />
 
-          <Divider sx={{ my: 2, backgroundColor: "rgba(255,255,255,0.25)" }} />
+        <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, color: "white" }}>
+          Complete Schedule
+        </Typography>
 
-          <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, color: "white" }}>
-            Complete Schedule
-          </Typography>
+        <List>
+          {plan.activities.map((activity, index) => (
+            <ListItem key={index} sx={{ mb: 1, borderRadius: 1, backgroundColor: "rgba(255,255,255,0.06)" }}>
+              <ListItemText primary={<Typography sx={{ color: "white" }}>{activity}</Typography>} />
+            </ListItem>
+          ))}
+        </List>
 
-          <List>
+        <Divider sx={{ my: 2, backgroundColor: "rgba(255,255,255,0.18)" }} />
 
-            {plan.activities.map((activity, index) => (
+        <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, color: "white" }}>
+          Travel Tips
+        </Typography>
 
-              <ListItem key={index} sx={{ mb: 1, borderRadius: 1, backgroundColor: "rgba(255,255,255,0.06)" }}>
+        <Stack direction="row" spacing={1} flexWrap="wrap">
+          {plan.tips.map((tip, index) => (
+            <Chip key={index} label={tip} sx={{ backgroundColor: "rgba(255,255,255,0.12)", color: "white" }} />
+          ))}
+        </Stack>
 
-                <ListItemText
-                  primary={<Typography sx={{ color: "white" }}>{activity}</Typography>}
-                />
+        <Divider sx={{ my: 2, backgroundColor: "rgba(255,255,255,0.18)" }} />
 
-              </ListItem>
+        <Typography variant="h6" sx={{ color: "white", fontWeight: 700 }}>
+          Estimated Budget
+        </Typography>
 
-            ))}
+        <Typography sx={{ color: "rgba(255,255,255,0.95)", mt: 1 }}>{plan.budget}</Typography>
 
-          </List>
-
-          <Divider sx={{ my: 2, backgroundColor: "rgba(255,255,255,0.18)" }} />
-
-          <Typography variant="h6" gutterBottom sx={{ fontWeight: 700, color: "white" }}>
-            Travel Tips
-          </Typography>
-
-          <Stack direction="row" spacing={1} flexWrap="wrap">
-            {plan.tips.map((tip, index) => (
-              <Chip key={index} label={tip} sx={{ backgroundColor: "rgba(255,255,255,0.12)", color: "white" }} />
-            ))}
-          </Stack>
-
-          <Divider sx={{ my: 2, backgroundColor: "rgba(255,255,255,0.18)" }} />
-
-          <Typography variant="h6" sx={{ color: "white", fontWeight: 700 }}>
-            Estimated Budget
-          </Typography>
-
-          <Typography sx={{ color: "rgba(255,255,255,0.95)", mt: 1 }}>
-            {plan.budget}
-          </Typography>
-
-        </CardContent>
-
-      </Card>
+      </SharedCard>
 
     </Container>
 
