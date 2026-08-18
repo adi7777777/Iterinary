@@ -16,16 +16,9 @@ function PaginationComponent({
 
   return (
 
-    <Stack
-      spacing={2}
-      alignItems="center"
-      sx={{
-        mt: 4,
-        mb: 4
-      }}
-    >
+    <Stack spacing={2} alignItems="center" sx={{ mt: 4, mb: 4 }}>
 
-      <Typography variant="h6">
+      <Typography variant="h6" sx={{ fontWeight: 700, color: '#333' }}>
         Day {currentPage} of {totalDays}
       </Typography>
 
@@ -36,6 +29,7 @@ function PaginationComponent({
         color="primary"
         shape="rounded"
         size="large"
+        sx={{ '& .Mui-selected': { background: 'linear-gradient(90deg,#6d7bf2,#9a73d6)' } }}
       />
 
     </Stack>

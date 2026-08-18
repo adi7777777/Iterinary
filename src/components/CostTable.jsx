@@ -13,22 +13,17 @@ function CostTable() {
 
   return (
 
-    <TableContainer
-      component={Paper}
-      elevation={2}
-    >
+    <TableContainer component={Paper} elevation={2} sx={{ borderRadius: 2, overflow: 'hidden' }}>
 
-      <Table>
+      <Table sx={{ minWidth: 320 }}>
 
-        <TableHead>
+        <TableHead sx={{ background: 'linear-gradient(90deg,#6d7bf2,#9a73d6)', color: 'white' }}>
 
           <TableRow>
 
             <TableCell>
 
-              <Typography
-                fontWeight="bold"
-              >
+              <Typography fontWeight="bold" sx={{ color: 'white' }}>
                 Expense
               </Typography>
 
@@ -36,9 +31,7 @@ function CostTable() {
 
             <TableCell>
 
-              <Typography
-                fontWeight="bold"
-              >
+              <Typography fontWeight="bold" sx={{ color: 'white' }}>
                 Amount
               </Typography>
 
@@ -50,72 +43,49 @@ function CostTable() {
 
         <TableBody>
 
-          <TableRow>
+          <TableRow hover>
 
-            <TableCell>
-              Stay
-            </TableCell>
+            <TableCell>Stay</TableCell>
 
-            <TableCell>
-              ₹7000
-            </TableCell>
+            <TableCell>₹7000</TableCell>
 
           </TableRow>
 
-          <TableRow>
+          <TableRow hover>
 
-            <TableCell>
-              Travel
-            </TableCell>
+            <TableCell>Travel</TableCell>
 
-            <TableCell>
-              ₹4000
-            </TableCell>
+            <TableCell>₹4000</TableCell>
 
           </TableRow>
 
-          <TableRow>
+          <TableRow hover>
 
-            <TableCell>
-              Food
-            </TableCell>
+            <TableCell>Food</TableCell>
 
-            <TableCell>
-              ₹2500
-            </TableCell>
+            <TableCell>₹2500</TableCell>
 
           </TableRow>
 
-          <TableRow>
+          <TableRow hover>
 
-            <TableCell>
-              Activities
-            </TableCell>
+            <TableCell>Activities</TableCell>
 
-            <TableCell>
-              ₹1000
-            </TableCell>
+            <TableCell>₹1000</TableCell>
 
           </TableRow>
 
-          <TableRow>
+          <TableRow sx={{ background: 'rgba(0,0,0,0.02)' }}>
 
             <TableCell>
 
-              <Typography
-                fontWeight="bold"
-              >
-                Total
-              </Typography>
+              <Typography fontWeight="bold">Total</Typography>
 
             </TableCell>
 
             <TableCell>
 
-              <Typography
-                fontWeight="bold"
-                color="primary"
-              >
+              <Typography fontWeight="bold" sx={{ color: '#6d7bf2' }}>
                 ₹14500
               </Typography>
 

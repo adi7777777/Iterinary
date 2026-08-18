@@ -20,78 +20,39 @@ import { useNavigate } from "react-router-dom";
 function Header() {
 
   const [open, setOpen] = useState(false);
-
   const navigate = useNavigate();
 
- const menuItems = [
-  {
-    text: "🏠 Home",
-    path: "/"
-  },
-  {
-    text: "📝 Trip Planner",
-    section: "tripForm"
-  },
-  {
-    text: "📖 About Destination",
-    section: "blog"
-  },
-  {
-    text: "🗓 Itinerary",
-    section: "itinerary"
-  },
-  {
-    text: "💰 Cost Breakdown",
-    section: "cost"
-  },
-  {
-    text: "📄 Travel Plan",
-    section: "pagination"
-  },
-  {
-    text: "ℹ About Us",
-    path: "/about"
-  }
-];
+  const menuItems = [
+    { text: "🏠 Home", path: "/" },
+    { text: "📝 Trip Planner", section: "tripForm" },
+    { text: "📖 About Destination", section: "blog" },
+    { text: "🗓 Itinerary", section: "itinerary" },
+    { text: "💰 Cost Breakdown", section: "cost" },
+    { text: "📄 Travel Plan", section: "pagination" },
+    { text: "ℹ About Us", path: "/about" }
+  ];
 
-const scrollToSection = (id) => {
-
-  navigate("/");
-
-  setTimeout(() => {
-
-    document
-      .getElementById(id)
-      ?.scrollIntoView({
-        behavior: "smooth",
-      });
-
-  }, 150);
-
-};
+  const scrollToSection = (id) => {
+    navigate("/");
+    setTimeout(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    }, 150);
+  };
 
   return (
     <>
 
-      <AppBar position="static">
+      <AppBar position="static" sx={{ background: 'linear-gradient(90deg,#5b6bea,#8a67d6)', boxShadow: '0 8px 30px rgba(86,85,173,0.18)' }}>
 
-        <Toolbar>
+        <Toolbar sx={{ px: { xs: 1.5, md: 3 } }}>
 
-          <IconButton
-            color="inherit"
-            onClick={() => setOpen(true)}
-          >
+          <IconButton color="inherit" onClick={() => setOpen(true)}>
             <MenuIcon />
           </IconButton>
 
-          <FlightTakeoffIcon
-            sx={{ mr: 2 }}
-          />
+          <FlightTakeoffIcon sx={{ mr: 2, transform: 'rotate(-10deg)' }} />
 
-          <Typography
-            variant="h5"
-            sx={{ flexGrow: 1 }}
-          >
+          <Typography variant="h6" sx={{ flexGrow: 1, fontWeight: 700 }}>
             Smart Travel Planner
           </Typography>
 
@@ -99,42 +60,16 @@ const scrollToSection = (id) => {
 
       </AppBar>
 
-      <Drawer
-        open={open}
-        onClose={() => setOpen(false)}
-      >
+      <Drawer open={open} onClose={() => setOpen(false)} PaperProps={{ sx: { borderRadius: 0 } }}>
 
-        <Box
-          sx={{
-            width: 250
-          }}
-        >
+        <Box sx={{ width: 260, p: 1 }}>
 
           <List>
 
             {menuItems.map((item) => (
 
-              <ListItemButton
-                key={item.text}
-            onClick={() => {
-
-    if (item.path) {
-
-        navigate(item.path);
-
-    } else if (item.section) {
-        scrollToSection(item.section);
-    }
-
-    setOpen(false);
-
-}}
-              >
-
-                <ListItemText
-                  primary={item.text}
-                />
-
+              <ListItemButton key={item.text} onClick={() => { if (item.path) { navigate(item.path); } else if (item.section) { scrollToSection(item.section); } setOpen(false); }}>
+                <ListItemText primary={item.text} />
               </ListItemButton>
 
             ))}
