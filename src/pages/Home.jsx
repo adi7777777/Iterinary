@@ -36,34 +36,45 @@ function Home({ trip, setTrip }) {
       <div className="home-root">
         <div className="main-panel">
 
-          {/* Trip Form */}
-          <Box id="tripForm">
-            <TripForm onGenerate={setTrip} />
-          </Box>
+          <div className="hero">
 
-          {trip && (
-            <>
-              {/* Blog */}
-              <Box id="blog" className="section">
-                <BlogCard place={trip.place} />
+            {/* left - form + content */}
+            <div>
+              <Box id="tripForm">
+                <TripForm onGenerate={setTrip} />
               </Box>
 
-              {/* Itinerary */}
-              <Box id="itinerary" className="section">
-                <Itinerary trip={trip} currentPage={currentPage} />
-              </Box>
+              {trip && (
+                <>
+                  <Box id="blog" className="section">
+                    <BlogCard place={trip.place} />
+                  </Box>
 
-              {/* Cost */}
-              <Box id="cost" className="section">
-                <CostAccordion />
-              </Box>
+                  <Box id="itinerary" className="section">
+                    <Itinerary trip={trip} currentPage={currentPage} />
+                  </Box>
 
-              {/* Pagination */}
-              <Box id="pagination" className="section">
-                <PaginationComponent currentPage={currentPage} setCurrentPage={setCurrentPage} totalDays={numDays} />
-              </Box>
-            </>
-          )}
+                  <Box id="cost" className="section">
+                    <CostAccordion />
+                  </Box>
+
+                  <Box id="pagination" className="section">
+                    <PaginationComponent currentPage={currentPage} setCurrentPage={setCurrentPage} totalDays={numDays} />
+                  </Box>
+                </>
+              )}
+            </div>
+
+            {/* right - decorative images */}
+            <div className="hero-right">
+              <img src="/images/travel-hero-1.jpg" alt="travel" />
+              <img className="sticker sticker-1" src="/images/sticker-plane.svg" alt="plane" />
+              <img className="sticker sticker-2" src="/images/sticker-suitcase.svg" alt="suitcase" />
+              <img className="sticker sticker-3" src="/images/sticker-map.svg" alt="map" />
+              <div className="badge">Explore destinations</div>
+            </div>
+
+          </div>
 
         </div>
       </div>
