@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Container, Box } from "@mui/material";
+import { Box } from "@mui/material";
+import Layout from "../components/Layout";
 
 import TripForm from "../components/TripForm";
 import BlogCard from "../components/BlogCard";
@@ -7,12 +8,12 @@ import Itinerary from "../components/Itinerary";
 import CostAccordion from "../components/CostAccordion";
 import PaginationComponent from "../components/PaginationComponent";
 
-// Utility function to calculate days between two dates
+// Utility function to calculate days between two dates (inclusive)
 const calculateDays = (startDate, endDate) => {
   const start = new Date(startDate);
   const end = new Date(endDate);
-  const diffTime = Math.abs(end - start);
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const diffTime = end - start;
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;
   return diffDays > 0 ? diffDays : 1;
 };
 
@@ -30,13 +31,7 @@ function Home({ trip, setTrip }) {
 
 
   return (
-    <Container
-      maxWidth="md"
-      sx={{
-        mt: 4,
-        mb: 4,
-      }}
-    >
+    <Layout sx={{ mt: 4, mb: 4 }}>
       {/* Trip Form */}
       <Box id="tripForm">
         <TripForm onGenerate={setTrip} />
@@ -72,7 +67,7 @@ function Home({ trip, setTrip }) {
           </Box>
         </>
       )}
-    </Container>
+    </Layout>
   );
 }
 
