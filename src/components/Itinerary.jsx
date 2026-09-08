@@ -1,6 +1,4 @@
 import {
-  Card,
-  CardContent,
   Typography,
   Divider,
   List,
@@ -10,6 +8,8 @@ import {
   Stack,
   Avatar
 } from "@mui/material";
+
+import SharedCard from "./SharedCard";
 
 import { useNavigate } from "react-router-dom";
 
@@ -89,142 +89,68 @@ function Itinerary({ trip, currentPage }) {
   const itineraryData = generateItinerary(trip.place, numDays);
 
   return (
+    <SharedCard sx={{ mt: 4 }}>
 
-    <Card
-      sx={{
-        mt: 4,
-        borderRadius: 3,
-        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-        color: "white",
-        boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)"
-      }}
-    >
+      <Typography variant="h5" gutterBottom sx={{ fontWeight: "bold", mb: 1 }}>
+        ✈️ Your Itinerary
+      </Typography>
 
-      <CardContent>
+      <Typography variant="h6" sx={{ mb: 2, opacity: 0.95, fontWeight: 500 }}>
+        {trip.place} • {numDays} Days
+      </Typography>
 
-        <Typography
-          variant="h5"
-          gutterBottom
-          sx={{ fontWeight: "bold", mb: 1 }}
-        >
-          ✈️ Your Itinerary
-        </Typography>
+      <Stack direction="row" spacing={1} mt={2} mb={3} sx={{ flexWrap: "wrap", gap: 1 }}>
+        <Chip label={`📅 ${trip.start} - ${trip.end}`} sx={{ backgroundColor: "rgba(255,255,255,0.18)", color: "white" }} />
+        <Chip label={`🏨 ${trip.stay}`} sx={{ backgroundColor: "rgba(255,255,255,0.12)", color: "white" }} />
+        <Chip label={`💰 ₹${trip.budget}`} sx={{ backgroundColor: "rgba(255,255,255,0.12)", color: "white" }} />
+        <Chip label={`🚗 ${trip.travel}`} sx={{ backgroundColor: "rgba(255,255,255,0.12)", color: "white" }} />
+        <Chip label={`🎯 ${trip.activities}`} sx={{ backgroundColor: "rgba(255,255,255,0.12)", color: "white" }} />
+      </Stack>
 
-        <Typography 
-          variant="h6"
-          sx={{ mb: 2, opacity: 0.9, fontWeight: 500 }}
-        >
-          {trip.place} • {numDays} Days
-        </Typography>
+      <Divider sx={{ mb: 2, backgroundColor: "rgba(255,255,255,0.25)" }} />
 
-        <Stack
-          direction="row"
-          spacing={1}
-          mt={2}
-          mb={3}
-          sx={{
-            flexWrap: "wrap",
-            gap: 1,
-          }}
-        >
+      <Typography variant="h6" gutterBottom sx={{ fontWeight: "bold", mt: 2 }}>
+        📍 Travel Plan
+      </Typography>
 
-          <Chip 
-            label={`📅 ${trip.start} - ${trip.end}`}
-            sx={{ backgroundColor: "rgba(255,255,255,0.3)", color: "white" }}
-          />
-          <Chip 
-            label={`🏨 ${trip.stay}`}
-            sx={{ backgroundColor: "rgba(255,255,255,0.3)", color: "white" }}
-          />
-          <Chip 
-            label={`💰 ₹${trip.budget}`}
-            sx={{ backgroundColor: "rgba(255,255,255,0.3)", color: "white" }}
-          />
-          <Chip 
-            label={`🚗 ${trip.travel}`}
-            sx={{ backgroundColor: "rgba(255,255,255,0.3)", color: "white" }}
-          />
-          <Chip 
-            label={`🎯 ${trip.activities}`}
-            sx={{ backgroundColor: "rgba(255,255,255,0.3)", color: "white" }}
-          />
+      <List sx={{ mt: 1 }}>
+        {itineraryData.map((item, index) => (
+          <ListItemButton
+            key={index}
+            selected={currentPage === index + 1}
+            onClick={() => navigate(`/day/${index + 1}?place=${trip.place}&numDays=${numDays}`)}
+            sx={{
+              mb: 1,
+              minHeight: 72,
+              alignItems: "flex-start",
+              cursor: "pointer",
+              borderRadius: 2,
+              backgroundColor: currentPage === index + 1 ? "rgba(255,255,255,0.28)" : "rgba(255,255,255,0.08)",
+              border: currentPage === index + 1 ? "2px solid rgba(255,255,255,0.35)" : "1px solid rgba(255,255,255,0.06)",
+              "&:hover": {
+                backgroundColor: "rgba(255,255,255,0.18)"
+              },
+              transition: "all 0.25s ease"
+            }}
+          >
+            <Avatar sx={{ backgroundColor: "rgba(255,255,255,0.12)", color: "white", mr: 2, fontWeight: "bold", width: 48, height: 48, fontSize: 18 }}>
+              {item.emoji}
+            </Avatar>
 
-        </Stack>
+            <ListItemText
+              primary={<Typography sx={{ fontWeight: "bold", color: "white" }}>{item.day}</Typography>}
+              secondary={
+                <>
+                  <Typography sx={{ color: "rgba(255,255,255,0.95)", fontWeight: 600 }}>{item.plan}</Typography>
+                  <Typography sx={{ color: "rgba(255,255,255,0.78)", mt: 0.5, fontSize: 13 }}>{item.overview}</Typography>
+                </>
+              }
+            />
+          </ListItemButton>
+        ))}
+      </List>
 
-        <Divider sx={{ mb: 2, backgroundColor: "rgba(255,255,255,0.3)" }} />
-
-        <Typography
-          variant="h6"
-          gutterBottom
-          sx={{ fontWeight: "bold", mt: 2 }}
-        >
-          📍 Travel Plan
-        </Typography>
-
-        <List sx={{ mt: 1 }}>
-
-          {itineraryData.map((item, index) => (
-
-            <ListItemButton
-              key={index}
-              selected={currentPage === index + 1}
-              onClick={() => navigate(`/day/${index + 1}?place=${trip.place}&numDays=${numDays}`)}
-              sx={{
-                mb: 1,
-                minHeight: 72,
-                alignItems: 'flex-start',
-                cursor: 'pointer',
-                borderRadius: 2,
-                backgroundColor: currentPage === index + 1 ? "rgba(255,255,255,0.3)" : "rgba(255,255,255,0.1)",
-                border: currentPage === index + 1 ? "2px solid white" : "1px solid rgba(255,255,255,0.2)",
-                "&:hover": {
-                  backgroundColor: "rgba(255,255,255,0.2)"
-                },
-                transition: "all 0.3s ease"
-              }}
-            >
-              <Avatar
-                sx={{
-                  backgroundColor: "rgba(255,255,255,0.12)",
-                  color: "white",
-                  mr: 2,
-                  fontWeight: "bold",
-                  width: 48,
-                  height: 48,
-                  fontSize: 18
-                }}
-              >
-                {item.emoji}
-              </Avatar>
-
-              <ListItemText
-                primary={
-                  <Typography sx={{ fontWeight: "bold", color: "white" }}>
-                    {item.day}
-                  </Typography>
-                }
-                secondary={
-                  <>
-                    <Typography sx={{ color: "rgba(255,255,255,0.9)", fontWeight: 600 }}>
-                      {item.plan}
-                    </Typography>
-                    <Typography sx={{ color: "rgba(255,255,255,0.75)", mt: 0.5, fontSize: 13 }}>
-                      {item.overview}
-                    </Typography>
-                  </>
-                }
-              />
-
-            </ListItemButton>
-
-          ))}
-
-        </List>
-
-      </CardContent>
-
-    </Card>
-
+    </SharedCard>
   );
 
 }

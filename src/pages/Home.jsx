@@ -37,8 +37,7 @@ function Home({ trip, setTrip }) {
         <div className="main-panel">
 
           <div className="hero">
-
-            {/* left - form + content */}
+         
             <div>
               <Box id="tripForm">
                 <TripForm onGenerate={setTrip} />
@@ -63,15 +62,6 @@ function Home({ trip, setTrip }) {
                   </Box>
                 </>
               )}
-            </div>
-
-            {/* right - decorative images */}
-            <div className="hero-right">
-              <img src="/images/travel-hero-1.jpg" alt="travel" />
-              <img className="sticker sticker-1" src="/images/sticker-plane.svg" alt="plane" />
-              <img className="sticker sticker-2" src="/images/sticker-suitcase.svg" alt="suitcase" />
-              <img className="sticker sticker-3" src="/images/sticker-map.svg" alt="map" />
-              <div className="badge">Explore destinations</div>
             </div>
 
           </div>

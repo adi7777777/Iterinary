@@ -55,7 +55,7 @@ function TripForm({ onGenerate }) {
   
 async function handleSubmit(e) {
 
-    e.preventDefault();
+    e.preventDefault();   //"Browser, don't perform your default form submission. I'll handle it with JavaScript."
 
    const response = await fetch(
     "http://localhost:5000/api/generate-trip",
