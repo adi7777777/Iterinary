@@ -58,7 +58,7 @@ async function handleSubmit(e) {
     e.preventDefault();   //"Browser, don't perform your default form submission. I'll handle it with JavaScript."
 
    const response = await fetch(
-    "http://https://iterinary.onrender.com/api/generate-trip",
+    "https://iterinary.onrender.com/api/generate-trip",
         {
             method: "POST",
 
