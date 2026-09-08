@@ -10,6 +10,8 @@ app.use(express.json());
 
 app.use("/api", tripRoutes);
 
-app.listen(5000, () => {
-    console.log("Listening on 5000");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Listening on ${PORT}`);
 });
